@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import logo from '../../../assets/images/logo.png'
 import Container from '../../../components/Container';
+import { NavLink } from 'react-router-dom';
 const Navbar = () => {
     const [navbar, setNavbar] = useState(false);
 
@@ -14,13 +15,24 @@ const Navbar = () => {
     }
     window.addEventListener('scroll', changeColor);
     const Navlinks = <>
-        <li>Home</li>
+        <li>
+            <NavLink to={'/'} className={({ isActive }) =>
+                isActive ? " border-b border-white" : " "} >Home</NavLink></li>
+        <li>
+            <NavLink to={'/about'} className={({ isActive }) =>
+                isActive ? " border-b border-white" : " "} >About</NavLink></li>
+        <li>
+            <NavLink to={'/appointment'} className={({ isActive }) =>
+                isActive ? " border-b border-white" : " "} >Appointment</NavLink></li>
+        <li>
+            <NavLink to={'/login'} className={({ isActive }) =>
+                isActive ? " border-b border-white" : " "} >Login</NavLink></li>
     </>
     return (
-        <div className={`fixed w-full ${navbar ? 'bg-green-800': 'bg-transparent'} `}>
+        <div className={`fixed w-full ${navbar ? 'bg-[#07332F;]' : 'bg-transparent  pt-5 md:pt-8'} `}>
             <Container>
                 <div className="navbar">
-                    <div className="navbar-start">
+                    <div className=" navbar-start ">
                         <div className="dropdown">
                             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
@@ -29,10 +41,12 @@ const Navbar = () => {
                                 {Navlinks}
                             </ul>
                         </div>
-                        <a className=""><img className='w-48' src={logo} alt="" /></a>
+                        <a className="content-end"><img className='w-48' src={logo} alt="" /></a>
                     </div>
+
+
                     <div className="navbar-end hidden lg:flex">
-                        <ul className="menu menu-horizontal px-1">
+                        <ul className="menu-horizontal px-1 text-white text-base space-x-5">
                             {Navlinks}
                         </ul>
                     </div>
