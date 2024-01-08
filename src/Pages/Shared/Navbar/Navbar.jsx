@@ -29,7 +29,7 @@ const Navbar = () => {
                 isActive ? " border-b border-white" : " "} >Login</NavLink></li>
     </>
     return (
-        <div className={`fixed w-full ${navbar ? 'bg-[#07332F;]' : 'bg-transparent  pt-5 md:pt-8'} `}>
+        <div className={`fixed w-full z-50 ${navbar ? 'bg-[#07332F;]' : 'bg-transparent  pt-5 md:pt-8'} `}>
             <Container>
                 <div className="navbar">
                     <div className=" navbar-start ">
