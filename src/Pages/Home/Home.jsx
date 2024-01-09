@@ -6,6 +6,7 @@ import { CiClock2, CiLocationOn } from "react-icons/ci";
 import { SlCallOut } from "react-icons/sl";
 import Testimonials from "../../components/Testimonials/Testimonials";
 
+
 const Home = () => {
     return (
         <div className="min-h-screen">
@@ -62,7 +63,7 @@ const Home = () => {
                 <section>
                     <Testimonials></Testimonials>
                 </section>
-            </Container>
+            </Container> 
         </div>
     );
 };
