@@ -5,6 +5,8 @@ import ServicesTab from "../../components/ServicesTabs/ServicesTab";
 import { CiClock2, CiLocationOn } from "react-icons/ci";
 import { SlCallOut } from "react-icons/sl";
 import Testimonials from "../../components/Testimonials/Testimonials";
+import Doctors from "../../components/Doctors/Doctors";
+import ContactUs from "../../components/ContactUs/ContactUs";
 
 
 const Home = () => {
@@ -63,6 +65,10 @@ const Home = () => {
                 <section>
                     <Testimonials></Testimonials>
                 </section>
+                <section>
+                    <Doctors></Doctors>
+                </section>
+                <section><ContactUs></ContactUs></section>
             </Container> 
         </div>
     );
