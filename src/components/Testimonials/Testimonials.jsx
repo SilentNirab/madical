@@ -21,7 +21,7 @@ const Testimonials = () => {
     return (
         <div className='py-20 space-y-10'>
             <div className="space-y-5 max-w-4xl text-center mx-auto">
-                <h2 className="text-4xl font-bold text-black">Our Services</h2>
+                <h2 className="text-4xl font-bold text-black">What Our Patients Says</h2>
                 <p className="text-base">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inve ntore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
 
             </div>
