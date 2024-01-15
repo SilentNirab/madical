@@ -3,7 +3,7 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
-import { CiCalendar, CiLocationOn,  CiMobile2 } from "react-icons/ci";
+import { CiCalendar, CiLocationOn, CiMobile2 } from "react-icons/ci";
 import { FaAngleDown } from "react-icons/fa";
 const ContactUs = () => {
     const [startDate, setStartDate] = useState(new Date());
@@ -16,7 +16,7 @@ const ContactUs = () => {
         const docName = form.get("doc-name");
         const date = form.get("date");
         const time = form.get("time");
-        const appoinment = {name, email, number, docName, date, time}
+        const appoinment = { name, email, number, docName, date, time }
         console.log(appoinment);
     }
 
@@ -30,13 +30,14 @@ const ContactUs = () => {
                     <p className="flex items-center text-center justify-center lg:justify-start  lg:text-left"><CiLocationOn className="text-2xl mr-1"></CiLocationOn>Dhanmondi, Dhaka, Bangladesh</p>
                 </div>
                 <form className="w-full grid grid-cols-2 gap-4 text-white" onSubmit={handleSubmit}>
-                    <input className="bg-[#FFFFFF0D] rounded-md p-4 placeholder:text-white" placeholder="Name" name='name' />
-                    <input className="bg-[#FFFFFF0D] rounded-md p-4 placeholder:text-white" placeholder="Email" name='email' />
-                    <input className="bg-[#FFFFFF0D] rounded-md p-4 placeholder:text-white" type="number" placeholder="Mobile Numder" name='number' />
-                    <input className="bg-[#FFFFFF0D] rounded-md p-4 placeholder:text-white" placeholder="Doctor Name" name='doc-name'/>
+                    <input className="bg-[#FFFFFF0D] rounded-md p-4 col-span-2 md:col-span-1 placeholder:text-white" placeholder="Name" name='name' />
+                    <input className="bg-[#FFFFFF0D] rounded-md p-4 col-span-2 md:col-span-1  placeholder:text-white" placeholder="Email" name='email' />
+                    <input className="bg-[#FFFFFF0D] rounded-md p-4 col-span-2 md:col-span-1  placeholder:text-white" type="number" placeholder="Mobile Numder" name='number' />
+                    <input className="bg-[#FFFFFF0D] rounded-md p-4 col-span-2 md:col-span-1  placeholder:text-white" placeholder="Doctor Name" name='doc-name' />
 
-                    <DatePicker
-                        className="bg-[#FFFFFF0D] text-white rounded-md p-4"
+                   <div className="col-span-2 md:col-span-1 w-full">
+                   <DatePicker
+                        className="bg-[#FFFFFF0D] text-white rounded-md p-4 "
                         selected={startDate}
                         onChange={(date) => setStartDate(date)}
                         placeholderText="Date"
@@ -45,20 +46,23 @@ const ContactUs = () => {
                         name='date'
 
                     />
-                    <DatePicker
-                        className="bg-[#FFFFFF0D] text-white rounded-md p-4"
-                        selected={startDate}
-                        onChange={(date) => setStartDate(date)}
-                        showTimeSelect
-                        showTimeSelectOnly
-                        timeIntervals={15}
-                        timeCaption="Time"
-                        dateFormat="h:mm aa"
-                        placeholderText="Time"
-                        showIcon
-                        icon={<FaAngleDown className="text-xl mr-1 mt-4 text-white"></FaAngleDown>}
-                        name='time'
-                    />
+                   </div>
+                    <div className='col-span-2 md:col-span-1 w-full'>
+                        <DatePicker
+                            className="bg-[#FFFFFF0D] text-white rounded-md p-4 col-span-2 md:col-span-1 "
+                            selected={startDate}
+                            onChange={(date) => setStartDate(date)}
+                            showTimeSelect
+                            showTimeSelectOnly
+                            timeIntervals={15}
+                            timeCaption="Time"
+                            dateFormat="h:mm aa"
+                            placeholderText="Time"
+                            showIcon
+                            icon={<FaAngleDown className="text-xl mr-1 mt-4 text-white"></FaAngleDown>}
+                            name='time'
+                        />
+                    </div>
                     <input className="bg-[#F7A582] text-xl py-2 hover:bg-[#ca8668] text-white rounded-lg col-span-2" type="submit" value="Book Now" />
 
                 </form>
