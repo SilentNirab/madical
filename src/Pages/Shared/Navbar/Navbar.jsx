@@ -2,7 +2,9 @@ import { useState } from 'react';
 import logo from '../../../assets/images/logo.png'
 import Container from '../../../components/Container';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 const Navbar = () => {
+    const { logOut, user } = useAuth();
     const [navbar, setNavbar] = useState(false);
 
     const changeColor = () => {
@@ -14,6 +16,13 @@ const Navbar = () => {
         }
     }
     window.addEventListener('scroll', changeColor);
+
+    const handelDelete = () => {
+        logOut()
+        .then(
+            console.log('logout')
+        )
+    }
     const Navlinks = <>
         <li>
             <NavLink to={'/'} className={({ isActive }) =>
@@ -24,9 +33,13 @@ const Navbar = () => {
         <li>
             <NavLink to={'/appointment'} className={({ isActive }) =>
                 isActive ? " border-b border-white" : " "} >Appointment</NavLink></li>
-        <li>
-            <NavLink to={'/login'} className={({ isActive }) =>
-                isActive ? " border-b border-white" : " "} >Login</NavLink></li>
+        {
+            user ?
+                <li><NavLink onClick={handelDelete} to={'/login'} className="bg-[#F7A582] px-4 py-2 rounded-md" >Log Out</NavLink></li>
+                :
+                <li><NavLink to={'/login'} className="bg-[#F7A582] px-4 py-2 rounded-md" >Login</NavLink></li>
+        }
+
     </>
     return (
         <div className={`fixed w-full z-50 ${navbar ? 'bg-[#07332F;]' : 'bg-transparent  pt-5 md:pt-8'} `}>

@@ -3,6 +3,7 @@ import { Rating } from '@smastrom/react-rating'
 
 import '@smastrom/react-rating/style.css'
 import { CiCalendar, CiDollar, CiLocationOn } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 const Doctors = () => {
     const [doctors, setDoctors] = useState([]);
@@ -28,11 +29,11 @@ const Doctors = () => {
                             <div className="card-body">
                                 <h2 className="card-title">{doctor.user_name}</h2>
                                 <p className="text-[#6C6B6B]">BTP - {doctor.user_profession}</p>
-                                <p className="mb-3"><Rating
+                                <span className="mb-3"><Rating
                                     style={{ maxWidth: 120 }}
                                      value={doctor.rating}
                                     readOnly
-                                /></p>
+                                /></span>
                                 <hr />
                                 <div className="space-y-3 text-[#6C6B6B] text-base mt-2">
                                 <p className="flex items-center"><CiLocationOn className="text-2xl mr-1"></CiLocationOn>{doctor.user_location}</p>
@@ -40,7 +41,7 @@ const Doctors = () => {
                                 <p className="flex items-center"><CiDollar className="text-2xl mr-1"></CiDollar>${doctor.consultation_fee}</p>
                                 </div>
                                 <div className="card-actions">
-                                    <button className="btn border-[#F7A582] border-2 text-[#F7A582] bg-transparent hover:bg-[#F7A582] text-base hover:text-white rounded-lg w-full mt-3">View Profile</button>
+                                  <Link>  <button className="btn border-[#F7A582] border-2 text-[#F7A582] bg-transparent hover:bg-[#F7A582] text-base hover:text-white rounded-lg w-full mt-3">View Profile</button></Link>
                                 </div>
                             </div>
                         </div>

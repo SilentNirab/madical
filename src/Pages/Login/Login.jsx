@@ -2,13 +2,35 @@ import { useState } from 'react';
 import loginimg from '../../assets/images/login.png'
 import { useForm } from "react-hook-form"
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 const Login = () => {
+    const {signIn, } = useAuth();
+    const navigate = useNavigate()
+    const [showPassword, setShowPassword] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        console.log(data);
+        signIn(data.email, data.password)
+        .then(result => {
+            console.log(result.user);
+            navigate('/')
+        })
+        .catch(error => {
+            console.error(error);
+        })
     }
-    const [showPassword, setShowPassword] = useState(false);
+    // const handelReset = () => {
+    //     const email = emailRef.current.value;
+        
+    //     resetpass(email)
+    //     .then(() => {
+    //         console.log('email send');
+    //     })
+    //     .catch(error =>{
+    //         console.log(error);
+    //     })
+    // }
+
     return (
         <div className="">
             <div className="flex flex-col md:flex-row items-center justify-between space-y-10">
@@ -21,9 +43,13 @@ const Login = () => {
                         <form className="w-full flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
 
                             <label className='font-bold'>Email</label>
-                            <input className="bg-[#F3F3F3] rounded-md p-4 F3F3F3 placeholder:#9D9C9C" placeholder="Enter your email" {...register("Email", { required: "Email Address is required" })} aria-invalid={errors.firstName ? "true" : "false"} />
+                            <input className="bg-[#F3F3F3] rounded-md p-4 F3F3F3 placeholder:#9D9C9C" placeholder="Enter your email" {...register("email", { required: "Email Address is required" })} />
 
+                           <div className=" flex justify-between">
                            <label className='font-bold'>Password</label>
+                           
+                           </div>
+
                             <div className=" form-control relative">
                                  
                                 <input type={
@@ -38,7 +64,7 @@ const Login = () => {
                                 {errors.password?.type === 'minLength' && <p className="text-[#F7A582]">Password must be 6 characters</p>}
                                 {errors.password?.type === 'maxLength' && <p className="text-[#F7A582]">Password must be less than 20 characters</p>}
                                 {errors.password?.type === 'pattern' && <p className="text-[#F7A582]">Password must have one Uppercase one lower case, one number and one special character.</p>}
-                                <span className="absolute top-11 right-4" onClick={() => setShowPassword(!showPassword)}>
+                                <span className="absolute top-5 right-4" onClick={() => setShowPassword(!showPassword)}>
                                     {
                                         showPassword ? <FaRegEyeSlash></FaRegEyeSlash> : <FaRegEye></FaRegEye>
                                     }

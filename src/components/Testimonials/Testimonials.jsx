@@ -36,7 +36,7 @@ const Testimonials = () => {
                     delay: 2500,
                     disableOnInteraction: false,
                 }}
-                loop={true}
+                
                 spaceBetween={30}
                 navigation={true}
                 modules={[Autoplay, Navigation]}
