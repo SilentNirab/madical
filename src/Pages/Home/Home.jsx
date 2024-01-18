@@ -7,11 +7,14 @@ import { SlCallOut } from "react-icons/sl";
 import Testimonials from "../../components/Testimonials/Testimonials";
 import Doctors from "../../components/Doctors/Doctors";
 import ContactUs from "../../components/ContactUs/ContactUs";
-
+import {Helmet} from "react-helmet";
 
 const Home = () => {
     return (
         <div className="min-h-screen">
+            <Helmet>
+                <title>Doc House | Home</title>
+            </Helmet>
             <Banner></Banner>
             <Container>
                 <section className="py-20">

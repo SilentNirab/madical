@@ -41,7 +41,7 @@ const Doctors = () => {
                                 <p className="flex items-center"><CiDollar className="text-2xl mr-1"></CiDollar>${doctor.consultation_fee}</p>
                                 </div>
                                 <div className="card-actions">
-                                  <Link>  <button className="btn border-[#F7A582] border-2 text-[#F7A582] bg-transparent hover:bg-[#F7A582] text-base hover:text-white rounded-lg w-full mt-3">View Profile</button></Link>
+                                  <Link to={`docprofile/${doctor._id}`}> <button className="btn border-[#F7A582] border-2 text-[#F7A582] bg-transparent hover:bg-[#F7A582] text-base hover:text-white rounded-lg w-full mt-3">View Profile</button></Link>
                                 </div>
                             </div>
                         </div>

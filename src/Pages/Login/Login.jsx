@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form"
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import { Helmet } from 'react-helmet';
 const Login = () => {
     const {signIn, } = useAuth();
     const navigate = useNavigate()
@@ -33,6 +34,9 @@ const Login = () => {
 
     return (
         <div className="">
+            <Helmet>
+                <title>Doc House | Login</title>
+            </Helmet>
             <div className="flex flex-col md:flex-row items-center justify-between space-y-10">
                 <div className="bg-cover bg-center min-h-[550px] md:h-screen bg-[url('assets/images/loginbg.png')] flex items-center px-20 md:w-2/4">
                     <img className='w-full' src={loginimg} alt="" />
