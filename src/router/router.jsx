@@ -5,6 +5,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import SignUp from "../Pages/SignUp/SignUp";
 import Login from "../Pages/Login/Login";
 import DocProfile from "../Pages/DocProfile/DocProfile";
+import Appointment from "../Pages/Appointment/Appointment";
 
   
 export  const router = createBrowserRouter([
@@ -29,6 +30,10 @@ export  const router = createBrowserRouter([
         {
           path: '/login',
           element: <Login></Login>
+        },
+        {
+          path: '/appointment',
+          element: <Appointment></Appointment>
         }
        
       ]

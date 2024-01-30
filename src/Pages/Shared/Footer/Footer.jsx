@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <footer className="bg-[#F3F3F3] py-10">
             <Container>
-                <div className="text-base-content footer ">
+                <div className="text-base-content footer">
                     <aside className='space-y-4'>
                         <img src={logo} />
                         <p className='max-w-72 text-[#6C6B6B]'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. has been since the printer took.</p>
