@@ -7,12 +7,12 @@ import Services from "./Services/Services";
 const Appointment = () => {
     const today = new Date();
     const [selectedDay, setSelectedDay] = useState(today);
-    
+
 
     const date = selectedDay ? (
-      <p className="text-center text-[#F7A582] text-xl">Available Services on {format(selectedDay, 'PPP')}.</p>
+        <p className="text-center text-[#F7A582] text-xl">Available Services on {format(selectedDay, 'PPP')}.</p>
     ) : (
-      <p className="text-center text-[#F7A582] text-xl">Available Services on</p>
+        <p className="text-center text-[#F7A582] text-xl">Available Services on</p>
     );
     return (
         <div>
@@ -22,7 +22,7 @@ const Appointment = () => {
                         <h2 className="text-white py-20 text-4xl font-bold">Appointment</h2>
                     </Container>
                 </div>
-                <section className="bg-top  bg-[url('assets/images/doc-bg.png')] z-auto">
+                <section className="bg-top bg-no-repeat bg-cover  bg-[url('assets/images/doc-bg.png')] z-auto">
                     <Container>
                         <div className="flex justify-between py-20">
                             <div className="">
@@ -35,6 +35,10 @@ const Appointment = () => {
                         <div className="">
                             <span>{date}</span>
                         </div>
+                    </Container>
+                </section>
+                <section className="bg-white">
+                    <Container>
                         <Services></Services>
                     </Container>
                 </section>
