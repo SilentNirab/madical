@@ -6,6 +6,8 @@ import SignUp from "../Pages/SignUp/SignUp";
 import Login from "../Pages/Login/Login";
 import DocProfile from "../Pages/DocProfile/DocProfile";
 import Appointment from "../Pages/Appointment/Appointment";
+import Dashboard from "../layout/Dashboard/Dashboard";
+import Appointments from "../Pages/Dashboard/Appointments/Appointments";
 
   
 export  const router = createBrowserRouter([
@@ -38,4 +40,15 @@ export  const router = createBrowserRouter([
        
       ]
     },
+    {
+      path: "/dashboard",
+      element: <Dashboard></Dashboard>,
+      errorElement: <ErrorPage></ErrorPage>,
+      children:[
+        {
+          path: "/dashboard/appointments",
+          element: <Appointments></Appointments>
+        }
+      ]
+    }
   ]);

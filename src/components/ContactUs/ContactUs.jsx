@@ -35,21 +35,20 @@ const ContactUs = () => {
                     <input className="bg-[#FFFFFF0D] rounded-md p-4 col-span-2 md:col-span-1  placeholder:text-white" type="number" placeholder="Mobile Numder" name='number' />
                     <input className="bg-[#FFFFFF0D] rounded-md p-4 col-span-2 md:col-span-1  placeholder:text-white" placeholder="Doctor Name" name='doc-name' />
 
-                   <div className="col-span-2 md:col-span-1 w-full">
+                   <div className="col-span-2 md:col-span-1 bg-[#FFFFFF0D] rounded-md p-4 relative">
                    <DatePicker
-                        className="bg-[#FFFFFF0D] text-white rounded-md p-4 "
+                        className="text-white bg-transparent focus:outline-none"
                         selected={startDate}
                         onChange={(date) => setStartDate(date)}
                         placeholderText="Date"
-                        showIcon
-                        icon={<CiCalendar className="text-2xl mr-1 text-white"></CiCalendar>}
                         name='date'
 
                     />
+                    <CiCalendar className="text-2xl mr-1 text-white absolute top-4 right-4"></CiCalendar>
                    </div>
-                    <div className='col-span-2 md:col-span-1 w-full'>
+                    <div className='col-span-2 md:col-span-1 bg-[#FFFFFF0D] rounded-md p-4 relative'>
                         <DatePicker
-                            className="bg-[#FFFFFF0D] text-white rounded-md p-4 col-span-2 md:col-span-1 "
+                            className="text-white bg-transparent focus:outline-none "
                             selected={startDate}
                             onChange={(date) => setStartDate(date)}
                             showTimeSelect
@@ -58,10 +57,9 @@ const ContactUs = () => {
                             timeCaption="Time"
                             dateFormat="h:mm aa"
                             placeholderText="Time"
-                            showIcon
-                            icon={<FaAngleDown className="text-xl mr-1 mt-4 text-white"></FaAngleDown>}
                             name='time'
                         />
+                        <span><FaAngleDown className="text-xl text-white absolute top-4 right-4"></FaAngleDown></span>
                     </div>
                     <input className="bg-[#F7A582] text-xl py-2 hover:bg-[#ca8668] text-white rounded-lg col-span-2" type="submit" value="Book Now" />
 

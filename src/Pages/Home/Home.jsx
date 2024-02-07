@@ -7,7 +7,7 @@ import { SlCallOut } from "react-icons/sl";
 import Testimonials from "../../components/Testimonials/Testimonials";
 import Doctors from "../../components/Doctors/Doctors";
 import ContactUs from "../../components/ContactUs/ContactUs";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
     return (
@@ -71,8 +71,10 @@ const Home = () => {
                 <section>
                     <Doctors></Doctors>
                 </section>
-                <section><ContactUs></ContactUs></section>
-            </Container> 
+                <section>
+                    <ContactUs></ContactUs>
+                </section>
+            </Container>
         </div>
     );
 };

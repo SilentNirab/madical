@@ -24,11 +24,11 @@ const Appointment = () => {
                 </div>
                 <section className="bg-top bg-no-repeat bg-cover  bg-[url('assets/images/doc-bg.png')] z-auto">
                     <Container>
-                        <div className="flex justify-between py-20">
-                            <div className="">
+                        <div className="flex md:flex-row flex-col justify-between py-20">
+                            <div className="flex justify-center">
                                 <Calender selected={selectedDay} onSelect={setSelectedDay}></Calender>
                             </div>
-                            <div className="">
+                            <div className="flex justify-center">
                                 <img src={chair} alt="" />
                             </div>
                         </div>
@@ -39,7 +39,7 @@ const Appointment = () => {
                 </section>
                 <section className="bg-white">
                     <Container>
-                        <Services></Services>
+                        <Services selectedDate={format(selectedDay, 'PPP')}></Services>
                     </Container>
                 </section>
             </div>

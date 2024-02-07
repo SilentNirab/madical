@@ -4,7 +4,7 @@ import ServiceItem from "../ServiceItem/ServiceItem";
 import Loader from "../../../components/Loader/Loader";
 
 // eslint-disable-next-line react/prop-types
-const Services = () => {
+const Services = ({selectedDate}) => {
     const [services, setServices] = useState([]);
     const [category, setCategory] = useState([])
     const [loader, setLoader] = useState(false)
@@ -18,10 +18,11 @@ const Services = () => {
     if (loader) {
         return <Loader></Loader>
     }
+    
     return (
         <div className="py-5">
             <h3 className="text-center font-bold text-4xl">Please select a service.</h3>
-            <div className="grid grid-cols-3 gap-4 py-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 py-10">
                 {
                     services.map(service => <Link onClick={() => setCategory(service.service)}
                      category={`${service.service}`} key={service._id} className="card bg-base-100 shadow-md">
@@ -32,7 +33,7 @@ const Services = () => {
                     </Link>)
                 }
             </div>
-            <ServiceItem category={category}></ServiceItem>
+            <ServiceItem category={category} selectedDate={selectedDate}></ServiceItem>
         </div>
     );
 };
