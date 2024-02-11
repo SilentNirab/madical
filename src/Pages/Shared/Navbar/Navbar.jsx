@@ -3,6 +3,7 @@ import logo from '../../../assets/images/logo.png'
 import Container from '../../../components/Container';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import toast from 'react-hot-toast';
 const Navbar = () => {
     const { logOut, user } = useAuth();
     const [navbar, setNavbar] = useState(false);
@@ -20,7 +21,8 @@ const Navbar = () => {
     const handelDelete = () => {
         logOut()
         .then(
-            console.log('logout')
+            toast.success('Successfully SignOut!')
+            
         )
     }
     const Navlinks = <>
@@ -33,6 +35,13 @@ const Navbar = () => {
         <li>
             <NavLink to={'/appointment'} className={({ isActive }) =>
                 isActive ? " border-b border-white" : " "} >Appointment</NavLink></li>
+                {
+            user ?
+                <li><NavLink to={'/dashboard '} className={({ isActive }) =>
+                isActive ? " border-b border-white" : " "}>Dashboard</NavLink></li>
+                :
+                ""
+        }
         {
             user ?
                 <li><NavLink onClick={handelDelete} to={'/login'} className="bg-[#F7A582] px-4 py-2 rounded-md" >Log Out</NavLink></li>

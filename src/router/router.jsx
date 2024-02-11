@@ -8,6 +8,7 @@ import DocProfile from "../Pages/DocProfile/DocProfile";
 import Appointment from "../Pages/Appointment/Appointment";
 import Dashboard from "../layout/Dashboard/Dashboard";
 import Appointments from "../Pages/Dashboard/Appointments/Appointments";
+import PrivateRoute from "./PrivetRoute";
 
   
 export  const router = createBrowserRouter([
@@ -42,12 +43,12 @@ export  const router = createBrowserRouter([
     },
     {
       path: "/dashboard",
-      element: <Dashboard></Dashboard>,
+      element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       errorElement: <ErrorPage></ErrorPage>,
       children:[
         {
           path: "/dashboard/appointments",
-          element: <Appointments></Appointments>
+          element: <PrivateRoute><Appointments></Appointments></PrivateRoute>
         }
       ]
     }

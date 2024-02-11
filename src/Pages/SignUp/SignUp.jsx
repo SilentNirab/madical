@@ -1,14 +1,18 @@
 import { useState } from 'react';
 import loginimg from '../../assets/images/login.png'
 import { useForm } from "react-hook-form"
-import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
+import { FaFacebook, FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
+import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import { Helmet } from 'react-helmet';
+import useAxios from '../../hooks/useAxios';
 const SignUp = () => {
+    const { createUser, googleSignIn, FacebookSignIn } = useAuth();
+    const publicAxios = useAxios();
+    const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [showPassword, setShowPassword] = useState(false);
-    const {createUser} = useAuth();
     const navigete = useNavigate();
 
     const onSubmit = data => {
@@ -22,18 +26,58 @@ const SignUp = () => {
                 console.error(error);
             })
     }
+    const handelGoogleSignin = () => {
+        googleSignIn()
+            .then((result) => {
+                // create entry in db
+                const userInfo = {
+                    name: result.user.displayName,
+                    email: result.user.email
+                }
+                publicAxios.post('/users', userInfo)
+                    .then(res => {
+                        if (res.data.insertedID) {
+                            console.log('user added to the database')
+                        }
+                    })
+                navigate('/');
+            })
+            .then(error => {
+                console.error(error);
+            })
+
+    }
+    const handelFAcebookSignin = () => {
+        FacebookSignIn()
+            .then((result) => {
+                console.log(result)
+                navigate('/');
+            })
+            .then(error => {
+                console.error(error);
+            })
+
+    }
     return (
         <div className="">
             <Helmet>
                 <title>Doc House | Signup</title>
             </Helmet>
-            <div className="flex flex-col md:flex-row items-center justify-between space-y-10">
+            <div className="flex flex-col md:flex-row items-center justify-between space-y-8">
                 <div className="bg-cover bg-center min-h-[550px] md:h-screen bg-[url('assets/images/loginbg.png')] flex items-center px-20 md:w-2/4">
                     <img className='w-full' src={loginimg} alt="" />
                 </div>
                 <div className="md:w-2/4 px-10 lg:px-20 lg:pr-40">
-                    <div className="border border-gray-200 rounded-lg p-10 space-y-6 mb-10 md:mb-0">
+                    <div className="border border-gray-200 rounded-lg py-5 px-7 space-y-6 mb-10 md:mb-0">
                         <h3 className='text-2xl font-bold text-center'>Sign Up to Doc House</h3>
+                        <div className="flex justify-center gap-6">
+                            <button onClick={handelFAcebookSignin} className='flex justify-center items-center border px-4 py-2 rounded-md shadow-md gap-4 font-semibold'>
+                                <FaFacebook className='text-2xl'></FaFacebook> Facebook
+                            </button>
+                            <button onClick={handelGoogleSignin} className='flex justify-center items-center border px-4 py-2 rounded-md shadow-md gap-4 font-semibold'>
+                                <FcGoogle className='text-2xl'></FcGoogle> Google
+                            </button>
+                        </div>
                         <form className="w-full flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
 
                             <label className='font-bold'>First Name</label>
